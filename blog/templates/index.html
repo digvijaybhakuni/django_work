@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All the POST</title>
+    <link rel="stylesheet" href="//cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro.min.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-responsive.min.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-schemes.min.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-icons.min.css">
+    <script src="//cdn.rawgit.com/olton/Metro-UI-CSS/master/build/js/metro.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="titleId">Title</label>
+    <div class="input-control text">
+        <input id="titleId" type="text" placeholder="Input you text here...">
+    </div>
+
+    <div class="input-control text" data-role="datepicker">
+        <input type="text">
+        <button class="button"><span class="mif-calendar"></span></button>
+    </div>
+</form>
+
+</body>
+</html>
