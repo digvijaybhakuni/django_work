@@ -14,7 +14,7 @@ class Author(models.Model):
 class Post(models.Model):
     postid = models.AutoField(primary_key=True)
     title = models.CharField("Post Title", max_length=50)
-    content = models.CharField("Content", max_length=1000)
+    content = models.TextField("Content", max_length=1000)
     author = models.ForeignKey(Author)
     datePub = models.DateField(verbose_name="Published Date")
 
@@ -29,6 +29,7 @@ class Post(models.Model):
     was_published_recently.admin_order_field = 'datePub'
     was_published_recently.boolean = True
     was_published_recently.short_description = 'Published recently?'
+
 
 """
     Using database models

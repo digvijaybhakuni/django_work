@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Post, Author
+from django.db import models
+from django.forms import TextInput, Textarea
 # Register your models here.
 
 
@@ -31,11 +33,20 @@ class PostAdmin(admin.ModelAdmin):
         ('Meta Info', {'fields': ['author', 'datePub'], 'classes': ['collapse']}),
     ]
 
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '20'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 40})},
+    }
+
     """
     This help to add more columns in this list view of post
     """
     list_display = ('title', 'datePub', 'author', 'was_published_recently')
-    list_filter = ['datePub']
+
+    """
+    This add filter to list view
+    """
+    list_filter = ['datePub', 'author']
 
 
 admin.site.register(Post, PostAdmin)
