@@ -22,7 +22,9 @@ class Post(models.Model):
         return " Post Title : " + self.title
 
     def was_published_recently(self):
-        return self.datePub >= (timezone.now() - datetime.timedelta(days=10)).date()
+        # return self.datePub >= (timezone.now() - datetime.timedelta(days=10)).date()
+        now = timezone.now();
+        return (now - datetime.timedelta(days=10)).date() <= self.datePub <= now.date()
 
     was_published_recently.admin_order_field = 'datePub'
     was_published_recently.boolean = True

@@ -35,6 +35,7 @@ class PostAdmin(admin.ModelAdmin):
     This help to add more columns in this list view of post
     """
     list_display = ('title', 'datePub', 'author', 'was_published_recently')
+    list_filter = ['datePub']
 
 
 admin.site.register(Post, PostAdmin)
