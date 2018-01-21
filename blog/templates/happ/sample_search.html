@@ -1,10 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'happ/base.html' %}
+{% block main-content-block %}
+    <div class="main-content-inner-wrapper happ-no-padding">
+        <div id="id_search_listing_box" class="happ-search-listing mdl-card mdl-shadow--2dp mdl-color--grey-100">
+            <div class="mdl-card__title happ-bottom-border">
+                <h2 class="mdl-card__title-text">Search Property Listing</h2>
+            </div>
+            <div class="happ-search-card-filter-control-wrapper">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input type="text" class="mdl-textfield__input" name="sch_text" id="id_sch_text"/>
+                        <label class="mdl-textfield__label" for="id_sch_text">Search Text</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                        <select class="mdl-cell mdl-selectfield__select" name="sch_on_field" id="id_sch_on_field">
+                            <option value=""></option>
+                            <option value="1">Mobile</option>
+                            <option value="2">Email</option>
+                            <option value="3">City</option>
+                            <option value="4">Age</option>
+                        </select>
+                        <label class="mdl-selectfield__label" for="id_sch_on_field">Select Field</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <a href="#/search"
+                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--raised">Search</a>
+                    </div>
+                </div>
+                <h6 style="margin: 5px;">Filter your listing</h6>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                        <select class="mdl-selectfield__select" name="sch_fltr_listing_type" id="id_sch_listing_type">
+                            <option value=""></option>
+                            <option>Sale</option>
+                            <option>Rent</option>
+                        </select>
+                        <label class="mdl-selectfield__label" for="id_sch_listing_type">Listing Type</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                        <select class="mdl-selectfield__select" name="sch_fltr_listing_status"
+                                id="id_sch_listing_status">
+                            <option value=""></option>
+                            <option>All Pending listings</option>
+                            <option>Active Under Review</option>
+                            <option>Pending listings</option>
+                            <option>Incomplete listing</option>
+                            <option>Invalid Status</option>
+                            <option>Under Review(Edited)</option>
+                        </select>
+                        <label class="mdl-selectfield__label" for="id_sch_listing_status">Listing Status</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                        <select class="mdl-selectfield__select" name="sch_fltr_listing_flag" id="id_sch_listing_flag">
+                            <option value=""></option>
+                            <option>Paused listing</option>
+                            <option>Price Out of Range</option>
+                            <option>HoneyPot</option>
+                            <option>Duplicate</option>
+                        </select>
+                        <label class="mdl-selectfield__label" for="id_sch_listing_flag">Flag</label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                        <select class="mdl-selectfield__select" name="sch_fltr_listing_source"
+                                id="id_sch_listing_source">
+                            <option value=""></option>
+                            <option>Content Console</option>
+                            <option>Agent Console</option>
+                            <option>Bulk Upload</option>
+                            <option>Groups</option>
+                            <option>Others</option>
+                        </select>
+                        <label class="mdl-selectfield__label" for="id_sch_listing_source">Listing Source</label>
+                    </div>
+                </div>
+                <h6 style="margin: 5px;">Sort By</h6>
+                <div class="happ-search-sort-warp">
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                        <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
+                        <span class="mdl-radio__label happ-ctl">Modified (Recent)</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                        <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
+                        <span class="mdl-radio__label happ-ctl">Modified (Oldest)</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                        <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3">
+                        <span class="mdl-radio__label happ-ctl">Added (Recent)</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+                        <input type="radio" id="option-4" class="mdl-radio__button" name="options" value="4">
+                        <span class="mdl-radio__label happ-ctl">Added (Oldest)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--raised">Submit</a>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Reset</a>
+            </div>
+        </div>
+        {% for foo in '12345' %}
+            <div class="happ-search-listing mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Plot for sale in Electorince city phase 1, Bangalore for 1.2
+                        crores</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML
+                    1.1.
+                    HTML5 is a standard for structuring and presenting content on the World Wide Web.
+                </div>
+                <div class="mdl-card__actions mdl-card--border"><a
+                        class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Open {{ foo }}</a>
+                </div>
+                <div class="mdl-card__menu">
+                    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"><i
+                            class="material-icons">share</i></button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

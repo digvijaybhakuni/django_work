@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Post, Author
+from .models import Post, Author, Property
 from django.db import models
 from django.forms import TextInput, Textarea
+
 # Register your models here.
 
 
@@ -14,6 +15,22 @@ class AuthorInline(admin.StackedInline):
     model = Author
 
 
+class AuthorFilter(admin.SimpleListFilter):
+    title = 'Select Author'
+    parameter_name = 'author'
+
+    def lookups(self, request, model_admin):
+        authors = set([c for c in Author.objects.all()])
+        return [(c.authorId, c.name) for c in authors]
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(author__authorId=self.value())
+        else:
+            return queryset
+
+
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     """
     This PostAdmin class extends the admin.ModelAdmin
@@ -35,7 +52,7 @@ class PostAdmin(admin.ModelAdmin):
 
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '20'})},
-        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 40})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 4})},
     }
 
     """
@@ -46,9 +63,36 @@ class PostAdmin(admin.ModelAdmin):
     """
     This add filter to list view
     """
-    list_filter = ['datePub', 'author']
+    # list_filter = ('datePub', AuthorFilter)
+    list_filter = ('datePub', ('author', admin.ChoicesFieldListFilter))
+
+    # filter_horizontal = ('datePub', 'title') #ManyToManyField
+
+    search_fields = ('title', 'content')
 
 
-admin.site.register(Post, PostAdmin)
-admin.site.register(Author)
+# admin.site.register(Post, PostAdmin)
+
+# admin.site.register(Post)
+
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Property)
+class PropertyAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '20'})},
+        models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 30})},
+    }
+
+    fieldsets = [
+        ('Owner Info', {'fields': ['owner_name', 'owner_type', 'email', 'mobile']}),
+        ('Best to time contact', {'fields': ['contact_start_time', 'contact_end_time']}),
+        ('Property Info', {'fields': ['property_for', 'property_condition']}),
+        ('Meta Info', {'fields': ['project_name', 'buildup_area'], 'classes': ['collapse', 'not-me']}),
+    ]
+
+    pass
 

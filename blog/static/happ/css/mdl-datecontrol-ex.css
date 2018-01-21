@@ -1,0 +1,228 @@
+.mdl-datefield {
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 300px;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.mdl-datefield .mdl-button {
+    position: absolute;
+    bottom: 20px;
+}
+
+.mdl-datefield--align-right {
+    text-align: right;
+}
+
+.mdl-datefield--full-width {
+    width: 100%;
+}
+
+.mdl-datefield--expandable {
+    min-width: 32px;
+    width: auto;
+    min-height: 32px;
+}
+
+.mdl-datefield__date {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    display: block;
+    font-size: 16px;
+    font-family: "Helvetica", "Arial", sans-serif;
+    margin: 0;
+    padding: 4px 0;
+    width: 100%;
+    background: none;
+    text-align: left;
+    color: inherit;
+}
+
+.mdl-datefield__date[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.mdl-datefield__date[type="number"]::-webkit-inner-spin-button, .mdl-datefield__date[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.mdl-datefield.is-focused .mdl-datefield__date {
+    outline: none;
+}
+
+.mdl-datefield.is-invalid .mdl-datefield__date {
+    border-color: rgb(213, 0, 0);
+    box-shadow: none;
+}
+
+fieldset[disabled] .mdl-datefield .mdl-datefield__date, .mdl-datefield.is-disabled .mdl-datefield__date {
+    background-color: transparent;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.mdl-datefield textarea.mdl-datefield__date {
+    display: block;
+}
+
+.mdl-datefield__label {
+    bottom: 0;
+    color: rgba(0, 0, 0, 0.26);
+    font-size: 16px;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    top: 24px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.mdl-datefield.is-dirty .mdl-datefield__label, .mdl-datefield.has-placeholder .mdl-datefield__label {
+    visibility: hidden;
+}
+
+.mdl-datefield--floating-label .mdl-datefield__label {
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mdl-datefield--floating-label.has-placeholder .mdl-datefield__label {
+    transition: none;
+}
+
+fieldset[disabled] .mdl-datefield .mdl-datefield__label, .mdl-datefield.is-disabled.is-disabled .mdl-datefield__label {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.mdl-datefield--floating-label.is-focused .mdl-datefield__label, .mdl-datefield--floating-label.is-dirty .mdl-datefield__label, .mdl-datefield--floating-label.has-placeholder .mdl-datefield__label {
+    color: rgb(0, 150, 136);
+    font-size: 12px;
+    top: 4px;
+    visibility: visible;
+}
+
+.mdl-datefield--floating-label.is-focused .mdl-datefield__expandable-holder .mdl-datefield__label, .mdl-datefield--floating-label.is-dirty .mdl-datefield__expandable-holder .mdl-datefield__label, .mdl-datefield--floating-label.has-placeholder .mdl-datefield__expandable-holder .mdl-datefield__label {
+    top: -16px;
+}
+
+.mdl-datefield--floating-label.is-invalid .mdl-datefield__label {
+    color: rgb(213, 0, 0);
+    font-size: 12px;
+}
+
+.mdl-datefield__label:after {
+    background-color: rgb(0, 150, 136);
+    bottom: 20px;
+    content: '';
+    height: 2px;
+    left: 45%;
+    position: absolute;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    width: 10px;
+}
+
+.mdl-datefield.is-focused .mdl-datefield__label:after {
+    left: 0;
+    visibility: visible;
+    width: 100%;
+}
+
+.mdl-datefield.is-invalid .mdl-datefield__label:after {
+    background-color: rgb(213, 0, 0);
+}
+
+.mdl-datefield__error {
+    color: rgb(213, 0, 0);
+    position: absolute;
+    font-size: 12px;
+    margin-top: 3px;
+    visibility: hidden;
+    display: block;
+}
+
+.mdl-datefield.is-invalid .mdl-datefield__error {
+    visibility: visible;
+}
+
+.mdl-datefield__expandable-holder {
+    display: inline-block;
+    position: relative;
+    margin-left: 32px;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    max-width: 0.1px;
+}
+
+.mdl-datefield.is-focused .mdl-datefield__expandable-holder, .mdl-datefield.is-dirty .mdl-datefield__expandable-holder {
+    max-width: 600px;
+}
+
+.mdl-datefield__expandable-holder .mdl-datefield__label:after {
+    bottom: 0;
+}
+
+
+.mdl-dialog {
+    border: none;
+    box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+    width: 280px;
+}
+
+.mdl-dialog__title {
+    padding: 24px 24px 0;
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.mdl-dialog__actions {
+    padding: 8px 8px 8px 24px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.mdl-dialog__actions > * {
+    margin-right: 8px;
+    height: 36px;
+}
+
+.mdl-dialog__actions > *:first-child {
+    margin-right: 0;
+}
+
+.mdl-dialog__actions--full-width {
+    padding: 0 0 8px 0;
+}
+
+.mdl-dialog__actions--full-width > * {
+    height: 48px;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    padding-right: 16px;
+    margin-right: 0;
+    text-align: right;
+}
+
+.mdl-dialog__content {
+    padding: 20px 24px 24px 24px;
+    color: rgba(0, 0, 0, 0.54);
+}

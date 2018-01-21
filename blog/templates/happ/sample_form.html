@@ -1,10 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'happ/base.html' %}
+{% block main-content-block %}
+    <div class="main-content-inner-wrapper mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800">
+        <h4>{{ header_form |default:_('Add/Edit Property Listing') }}</h4>
+        <form action="#">
+            <div class="mdl-grid happ-property-listing-form">
+                <div class="mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="id_model_name">
+                    <label class="mdl-textfield__label" for="id_model_name">Name</label>
+                </div>
+                <div class="mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="id_model_age">
+                    <label class="mdl-textfield__label" for="id_model_age">Age</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+                <div id="date_container" class="mdl-cell--4-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="date" readonly/>
+                    <label class="mdl-textfield__label" id="date_label" for="date">Date</label>
+                </div>
+                <div class="content-timing mdl-cell--6-col">
+                    <div>
+                        <spam class="happ-label-time-to-contact">Time to Contact</spam>
+                    </div>
+                    <div id="id_time_to_contact">
+                        <div class="mdl-cell--6-col mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            <select class="mdl-textfield__input " id="id_model_time_start">
+                                <option selected></option>
+                                <option>10:00</option>
+                                <option>10:15</option>
+                                <option>10:30</option>
+                                <option>10:45</option>
+                                <option>11:00</option>
+                            </select>
+                            <label class="mdl-selectfield__label" for="id_model_time_end">Start Time</label>
+                        </div>
+                        <div class="mdl-cell--6-col mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                            <select class="mdl-selectfield__select" id="id_model_time_end">
+                                <option selected></option>
+                                <option>10:00</option>
+                                <option>10:15</option>
+                                <option>10:30</option>
+                                <option>10:45</option>
+                                <option>11:00</option>
+                            </select>
+                            <label class="mdl-selectfield__label" for="id_model_time_end">End Time</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell--3-col mdl-datefield mdl-js-datefield mdl-datefield--floating-label">
+                    <input class="mdl-datefield__date" type="text" id="date-fld-1"/>
+                    <label class="mdl-datefield__label" id="date-fld-l1" for="date-fld-1">Date</label>
+                </div>
+                <div class="mdl-cell--3-col mdl-datefield mdl-js-datefield mdl-datefield--floating-label">
+                    <input class="mdl-datefield__date" type="text" id="date-fld-2" readonly/>
+                    <label class="mdl-datefield__label" id="date-fld-l2" for="date-fld-2">Date</label>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

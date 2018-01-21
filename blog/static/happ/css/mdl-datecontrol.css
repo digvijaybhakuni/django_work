@@ -1,0 +1,6 @@
+#mdl-datepicker-year-date, #mdl-datepicker-selected-date-date{
+    text-align: center;
+    background-color: rgb(0,150,136);
+    color: #ffffff;
+    padding: 2px;
+}
