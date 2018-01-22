@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.forms import PostForm
 from django.contrib.auth import hashers
 
@@ -13,6 +13,18 @@ def index(request):
         form_post = PostForm(request.POST)
         form_post.save()
         return render(request, 'index.html', {})
+
+# To Show Form2.html
+def form2(request):
+    
+    if request.method == 'GET':
+        return render(request, 'form2.html', { 'form' : PostForm(), 'site_header' : 'THIS' })
+    elif request.method == 'POST':
+        form_post = PostForm(request.POST)
+        if form_post.is_valid():
+            form_post.save()
+            return redirect('/blog/')
+        return render(request, 'form2.html', { 'form' : form_post })
 
 
 def indexx(request):
