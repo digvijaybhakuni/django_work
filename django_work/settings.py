@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'formtools',
-    'bootstrapform'
+    'bootstrapform',
+    'rest_framework',
+    'webapp'
 ]
 
 MIDDLEWARE_CLASSES = [
