@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'formtools',
     'bootstrapform',
     'rest_framework',
+    'rest_framework.authtoken',
     'webapp'
 ]
 
@@ -95,6 +96,13 @@ DATABASES = {
     #}
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', )
+}
 
 # Password validation
 
@@ -126,6 +134,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# To append slash url as optional
+APPEND_SLASH=False
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'photo')
+
+MEDIA_URL='/media/images/'
 
 
 # Static files (CSS, JavaScript, Images)
