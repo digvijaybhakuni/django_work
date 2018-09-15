@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^register/', views.register),
     #url(r'^profile/', views.ProfileApi.as_view()),
     url(r'^profile/(?P<pk>[0-9]+)/$', views.ProfileApi.as_view()),
+    url(r'^upload/(?P<pk>[0-9]+)/$$', views.UploadImageAPI.as_view()),
 ]
 
 # urlpatterns = [

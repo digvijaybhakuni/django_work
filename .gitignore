@@ -1,5 +1,6 @@
 django_work_env/
 photo/
+media/
 
 # Created by https://www.gitignore.io/api/django,python,visualstudiocode
 

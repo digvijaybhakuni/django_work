@@ -14,12 +14,13 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 
-from .models import Employee, Profile
+from .models import Employee, Profile, BinaryStorage
 from .serializers import EmployeeSerializer, UserSerializer, ProfileSerializer
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
-
+from rest_framework.exceptions import ParseError
+from rest_framework.parsers import FileUploadParser, MultiPartParser
 # Create your views here.
 
 
@@ -85,6 +86,26 @@ class ProfileApi(APIView):
     def pre_save(self, obj):
         print("pre save " + obj)
         obj.emp = Employee.objects.get(pk=self.request.data.emp)
+
+
+class ImageUploadParser(FileUploadParser):
+    media_type = 'image/*'
+
+
+@permission_classes((AllowAny,))
+class UploadImageAPI(APIView):
+    parser_classes = (MultiPartParser, FileUploadParser,)
+
+    def put(self, request, format=None):
+        if 'file' not in request.data:
+            raise ParseError("Empty content")
+        f = request.data['file']
+        bstoreObj = BinaryStorage(name=f.name, data=f, data_binary=f.read()).save()
+        return Response(status=status.HTTP_201_CREATED)
+
+    def get(self, request, pk, format=None):
+        obj = BinaryStorage.objects.get(pk=pk)
+        return HttpResponse(obj.data_binary, content_type='image/jpeg')
 
 
 @api_view(['GET'])

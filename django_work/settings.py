@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'bootstrapform',
     'rest_framework',
     'rest_framework.authtoken',
+    'imagekit',
+    'sorl_thumbnail_serializer',
     'webapp'
 ]
 
@@ -136,11 +138,11 @@ USE_L10N = True
 USE_TZ = True
 
 # To append slash url as optional
-APPEND_SLASH=False
+APPEND_SLASH=True
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'photo')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL='/media/images/'
+MEDIA_URL='/media/content/'
 
 
 # Static files (CSS, JavaScript, Images)

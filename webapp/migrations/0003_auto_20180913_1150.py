@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='Profile',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('image', models.ImageField(max_length=254, upload_to='photo')),
+                ('image', models.ImageField(max_length=254, upload_to='media')),
             ],
         ),
         migrations.AddField(
