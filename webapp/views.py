@@ -1,17 +1,10 @@
-from django.shortcuts import render, get_object_or_404
-
 from django.http import HttpResponse, Http404
 from django.contrib.auth import authenticate, models
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework import status, generics, mixins
-from rest_framework.status import (
-    HTTP_400_BAD_REQUEST,
-    HTTP_404_NOT_FOUND,
-    HTTP_200_OK
-)
+from rest_framework import status, mixins
 from rest_framework.response import Response
 
 from .models import Employee, Profile, BinaryStorage
@@ -25,14 +18,15 @@ from rest_framework.parsers import FileUploadParser, MultiPartParser
 
 
 class EmployeeSearchAPI(APIView):
-
+    """ EmployeeSearchAPI """
     def get(self, request):
         emps = Employee.objects.all()
         empsjs = EmployeeSerializer(emps, many=True)
         return Response(empsjs.data)
 
 
-class EmployeeCrudApi(ModelViewSet): # generics.ListCreateAPIView
+class EmployeeCrudApi(ModelViewSet):
+    """ EmployeeCrudApi """
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     permission_classes = (IsAuthenticated,)
@@ -45,20 +39,21 @@ class EmployeeCrudApi(ModelViewSet): # generics.ListCreateAPIView
 
 class ProfileApiViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
                         mixins.DestroyModelMixin, GenericViewSet):
+    """ ProfileApiViewSet """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = (IsAuthenticated,)
 
 
 class ProfileApi(APIView):
-
+    """ProfileApi"""
     def get_object(self, pk):
         try:
             return Profile.objects.get(pk=pk)
         except Profile.DoesNotExist:
             raise Http404
 
-    def get(self, request, pk, format=None):
+    def get(self, request, pk=0, format=None):
         photo = self.get_object(pk)
         serializer = ProfileSerializer(photo)
         return Response(serializer.data)
@@ -72,8 +67,8 @@ class ProfileApi(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk, format=None):
-        #pk = request.data['pk']
-        print("pk "+ pk)
+        # pk = request.data['pk']
+        print("pk " + pk)
         id = request.data['id']
         if id:
             instance = self.get_object(pk=id)
@@ -89,18 +84,21 @@ class ProfileApi(APIView):
 
 
 class ImageUploadParser(FileUploadParser):
+    """ ImageUploadParser """
     media_type = 'image/*'
 
 
 @permission_classes((AllowAny,))
 class UploadImageAPI(APIView):
+    """ UploadImageAPI """
     parser_classes = (MultiPartParser, FileUploadParser,)
 
     def put(self, request, format=None):
         if 'file' not in request.data:
             raise ParseError("Empty content")
         f = request.data['file']
-        bstoreObj = BinaryStorage(name=f.name, data=f, data_binary=f.read()).save()
+        BinaryStorage.objects.all();
+        BinaryStorage(name=f.name, data=f, data_binary=f.read()).save()
         return Response(status=status.HTTP_201_CREATED)
 
     def get(self, request, pk, format=None):
@@ -122,14 +120,14 @@ def login(request):
     password = request.data.get("password")
     if username is None or password is None:
         return Response({'error': 'Please provide both username and password'},
-                        status=HTTP_400_BAD_REQUEST)
+                        status=status.HTTP_400_BAD_REQUEST)
     user = authenticate(username=username, password=password)
     if not user:
         return Response({'error': 'Invalid Credentials'},
-                        status=HTTP_404_NOT_FOUND)
+                        status=status.HTTP_404_NOT_FOUND)
     token, _ = Token.objects.get_or_create(user=user)
     return Response({'token': token.key},
-                    status=HTTP_200_OK)
+                    status=status.HTTP_200_OK)
 
 
 @csrf_exempt
@@ -140,7 +138,7 @@ def register(request):
     password = request.data.get("password")
     if email is None or password is None:
         return Response({'error': 'Please provide both email and password'},
-                        status=HTTP_400_BAD_REQUEST)
+                        status=status.HTTP_400_BAD_REQUEST)
     user = models.User.objects.create_user(email, email, password)
     first_name = request.data.get("first_name")
     last_name = request.data.get("last_name")

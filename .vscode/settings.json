@@ -1,3 +1,8 @@
 {
-    "python.pythonPath": "${workspaceFolder}/django_work_env/bin/python"
+    "python.pythonPath": "${workspaceFolder}\\env_django_work\\Scripts\\python.exe",
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django"
+    ],
+    "files.autoSave": "afterDelay",
+
 }

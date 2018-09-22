@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{17d8c3bc-959e-41ff-b8af-19e40def18b6}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <InterpreterId>Global|VisualStudio|env_django_work</InterpreterId>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <DjangoSettingsModule>django_work.settings</DjangoSettingsModule>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="blog\static\blog\style.css" />
+    <Content Include="blog\static\happ\css\mdl-datecontrol-ex.css" />
+    <Content Include="blog\static\happ\css\mdl-datecontrol.css" />
+    <Content Include="blog\static\happ\css\mdl-selectcontrol.css" />
+    <Content Include="blog\static\happ\css\style.css" />
+    <Content Include="blog\static\happ\js\controls.js" />
+    <Content Include="blog\static\happ\js\mdl-datecontrol-ex.js" />
+    <Content Include="blog\static\happ\js\mdl-datecontrol.js" />
+    <Content Include="blog\static\happ\js\mdl-selectcontrol.js" />
+    <Content Include="blog\templates\adminBlog.html" />
+    <Content Include="blog\templates\form.html" />
+    <Content Include="blog\templates\form2.html" />
+    <Content Include="blog\templates\happ\base.html" />
+    <Content Include="blog\templates\happ\sample_form.html" />
+    <Content Include="blog\templates\happ\sample_search.html" />
+    <Content Include="blog\templates\happ\sample_view.html" />
+    <Content Include="blog\templates\index.html" />
+    <Content Include="req.txt" />
+    <Content Include="requirement.txt" />
+    <Content Include="templates\admin\base_site.html" />
+    <Content Include="templates\admin\change_form.html" />
+    <Content Include="templates\admin\search_form.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="blog\admin.py" />
+    <Compile Include="blog\apps.py" />
+    <Compile Include="blog\forms.py" />
+    <Compile Include="blog\migrations\0001_initial.py" />
+    <Compile Include="blog\migrations\0002_post_content.py" />
+    <Compile Include="blog\migrations\0003_auto_20160526_2007.py" />
+    <Compile Include="blog\migrations\0004_property.py" />
+    <Compile Include="blog\migrations\0005_auto_20180911_1846.py" />
+    <Compile Include="blog\migrations\__init__.py" />
+    <Compile Include="blog\models.py" />
+    <Compile Include="blog\options.py" />
+    <Compile Include="blog\tests.py" />
+    <Compile Include="blog\urls.py" />
+    <Compile Include="blog\views.py" />
+    <Compile Include="blog\__init__.py" />
+    <Compile Include="django_work\settings.py" />
+    <Compile Include="django_work\urls.py" />
+    <Compile Include="django_work\wsgi.py" />
+    <Compile Include="django_work\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="webapp\admin.py" />
+    <Compile Include="webapp\apps.py" />
+    <Compile Include="webapp\migrations\0001_initial.py" />
+    <Compile Include="webapp\migrations\0002_auto_20180911_1930.py" />
+    <Compile Include="webapp\migrations\0003_auto_20180913_1150.py" />
+    <Compile Include="webapp\migrations\0004_auto_20180913_1151.py" />
+    <Compile Include="webapp\migrations\0005_auto_20180915_0801.py" />
+    <Compile Include="webapp\migrations\0006_auto_20180915_1028.py" />
+    <Compile Include="webapp\migrations\0007_binarystorage.py" />
+    <Compile Include="webapp\migrations\0008_binarystorage_data_binary.py" />
+    <Compile Include="webapp\migrations\__init__.py" />
+    <Compile Include="webapp\models.py" />
+    <Compile Include="webapp\serializers.py" />
+    <Compile Include="webapp\tests.py" />
+    <Compile Include="webapp\urls.py" />
+    <Compile Include="webapp\views.py" />
+    <Compile Include="webapp\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="blog" />
+    <Folder Include="blog\migrations" />
+    <Folder Include="blog\static\" />
+    <Folder Include="blog\static\blog" />
+    <Folder Include="blog\static\happ\" />
+    <Folder Include="blog\static\happ\css" />
+    <Folder Include="blog\static\happ\js" />
+    <Folder Include="blog\templates" />
+    <Folder Include="blog\templates\happ" />
+    <Folder Include="django_work" />
+    <Folder Include="templates\" />
+    <Folder Include="templates\admin" />
+    <Folder Include="webapp" />
+    <Folder Include="webapp\migrations" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|VisualStudio|env_django_work" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env_django_work\">
+      <Id>env_django_work</Id>
+      <Description>env_django_work (Python 3.6 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <Version>3.6</Version>
+      <Architecture>X64</Architecture>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
